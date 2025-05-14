@@ -1,13 +1,19 @@
 <div class="container py-4">
-  <h2 class="text-center mb-4">CRUD Productos</h2>
+  <h2 class="text-center mb-4">🛒 CRUD Productos</h2>
 
   <form (ngSubmit)="guardar()" #form="ngForm" class="mb-4">
-    <input type="text" name="title" [(ngModel)]="formulario.title" placeholder="Título" required class="form-control mb-2">
-    <input type="number" name="price" [(ngModel)]="formulario.price" placeholder="Precio" required class="form-control mb-2">
-    <input type="text" name="image" [(ngModel)]="formulario.image" placeholder="URL Imagen" required class="form-control mb-2">
+    <input type="text" name="title" [(ngModel)]="formulario.title" placeholder="Título" required
+      class="form-control mb-2">
+    <div class="input-group mb-2">
+      <span class="input-group-text">$</span>
+      <input type="number" name="price" [(ngModel)]="formulario.price" placeholder="Precio" required
+        class="form-control">
+    </div>
+    <input type="text" name="image" [(ngModel)]="formulario.image" placeholder="URL Imagen" required
+      class="form-control mb-2">
 
-    <button type="submit" class="btn btn-primary">{{ editando ? 'Actualizar' : 'Crear' }}</button>
-    <button type="button" *ngIf="editando" (click)="cancelar()" class="btn btn-secondary ms-2">Cancelar</button>
+    <button type="submit" class="btn btn-lg btn-primary">{{ editando ? 'Actualizar' : '+ Agregar Producto' }}</button>
+    <button type="button" *ngIf="editando" (click)="cancelar()" class="btn btn-lg btn-secondary ms-2">Cancelar</button>
   </form>
 
   <div class="row g-4">
@@ -17,8 +23,9 @@
         <div class="card-body">
           <h5>{{ producto.title }}</h5>
           <p class="text-success fw-bold">$ {{ producto.price }}</p>
-          <button (click)="editar(producto)" class="btn btn-sm btn-warning">Editar</button>
-          <button (click)="abrirModalEliminar(producto)" class="btn btn-sm btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#modalEliminar">Eliminar</button>
+          <button (click)="editar(producto)" class="btn btn-lg btn-warning">Editar</button>
+          <button (click)="abrirModalEliminar(producto)" class="btn btn-lg btn-danger ms-2" data-bs-toggle="modal"
+            data-bs-target="#modalEliminar">Eliminar</button>
         </div>
       </div>
     </div>
